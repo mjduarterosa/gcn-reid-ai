@@ -1,4 +1,5 @@
 import pickle
+from pathlib import Path
 from collections import defaultdict
 
 import streamlit as st
@@ -7,10 +8,11 @@ import numpy as np
 st.set_page_config(layout="wide")
 
 TOP_K_OPTIONS = [5, 10]
+DATA_PATH = Path(__file__).parent / "newt_data.pkl"
 
 @st.cache_data
 def load_data():
-    with open("newt_data.pkl", "rb") as f:
+    with open(DATA_PATH, "rb") as f:
         return pickle.load(f)
 
 data = load_data()
